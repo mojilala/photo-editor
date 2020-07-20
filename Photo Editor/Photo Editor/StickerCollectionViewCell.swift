@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import SDWebImage
 
 class StickerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var stickerImage: UIImageView!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    func setStickerImage(from url: String) {
+        stickerImage.sd_setShowActivityIndicatorView(true)
+        stickerImage.sd_setIndicatorStyle(.gray)
+        stickerImage.sd_setImage(with: URL(string: url))
     }
 
 }

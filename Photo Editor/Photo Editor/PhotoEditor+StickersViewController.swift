@@ -44,7 +44,7 @@ extension PhotoEditorViewController {
             self.stickersViewController.removeFromParent()
             self.hideToolbar(hide: false)
         })
-    }    
+    }
 }
 
 extension PhotoEditorViewController: StickersViewControllerDelegate {
@@ -58,12 +58,17 @@ extension PhotoEditorViewController: StickersViewControllerDelegate {
         addGestures(view: view)
     }
     
-    func didSelectImage(image: UIImage) {
+    func didSelectImage(from url: String) {
         self.removeStickersView()
         
-        let imageView = UIImageView(image: image)
+        let imageView = UIImageView()
+        imageView.image(fromURLString: url) { (error) in
+            if let error = error {
+                print(error.errorDescription)
+            }
+        }
         imageView.contentMode = .scaleAspectFit
-        imageView.frame.size = CGSize(width: 150, height: 150)
+        imageView.frame.size = CGSize(width: 100, height: 100)
         imageView.center = canvasImageView.center
         
         self.canvasImageView.addSubview(imageView)

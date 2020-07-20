@@ -43,7 +43,7 @@ public final class PhotoEditorViewController: UIViewController {
     /**
      Array of Stickers -UIImage- that the user will choose from
      */
-    @objc public var stickers : [UIImage] = []
+    @objc public var stickers : [String] = []
     /**
      Array of Colors that will show while drawing or typing
      */

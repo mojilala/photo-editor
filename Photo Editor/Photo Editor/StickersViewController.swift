@@ -19,7 +19,7 @@ class StickersViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var emojisDelegate: EmojisCollectionViewDelegate!
     
-    var stickers : [UIImage] = []
+    var stickers : [String] = []
     var stickersViewControllerDelegate : StickersViewControllerDelegate?
     
     let screenSize = UIScreen.main.bounds.size
@@ -221,7 +221,7 @@ extension StickersViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        stickersViewControllerDelegate?.didSelectImage(image: stickers[indexPath.item])
+        stickersViewControllerDelegate?.didSelectImage(from: stickers[indexPath.item])
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -231,7 +231,7 @@ extension StickersViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = "StickerCollectionViewCell"
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! StickerCollectionViewCell
-        cell.stickerImage.image = stickers[indexPath.item]
+        cell.setStickerImage(from: stickers[indexPath.item])
         return cell
     }
     
@@ -244,4 +244,3 @@ extension StickersViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
 }
-

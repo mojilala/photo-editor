@@ -1,0 +1,97 @@
+# General
+#
+*.swp
+
+# OSX
+#
+.DS_Store
+Iconr
+
+## Windows
+#
+desktop.ini
+
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
+.nvm
+/danger/node_modules/
+
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
+
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
+
+# Bundle artifact
+*.jsbundle
+
+# Fabric
+crashlytics-build.properties
+com_crashlytics_export_strings.xml
+
+# iOS package manager files
+#
+Pods/
+Carthage/
+
+# fastlane
+*.app.dSYM.zip
+*/fastlane/report.xml
+*/fastlane/Preview.html
+fastlane-api-5147127107622195351-571825-eb30b8a88ae7.json
+
+# bundler
+.bundle
+**/vendor/bundle/
+**/vendor/ruby/
+
+# Stickers
+#
+/app/data/images/
+/app/data/i18n/strings.flow.js
+
+/app/**/__generated__/
+/data/schema.graphql
+
+/ios/assets/app

@@ -12,6 +12,8 @@ with the ability to scale and rotate objects
   s.license          = { :type => 'MIT', :file => 'LICENSE.md' }
   s.author           = { 'Mohamed Hamed' => 'mohamed.hamed.ibrahem@gmail.com' }
   s.source           = { :git => 'https://github.com/M-Hamed/photo-editor.git', :tag => s.version.to_s }
+
+  s.dependency 'SDWebImage', '~> 4.4.7'
  
   s.ios.deployment_target = '9.0'
   s.swift_version = '4.2'
