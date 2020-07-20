@@ -32,6 +32,7 @@ public final class PhotoEditorViewController: UIViewController {
     
     //Controls
     @IBOutlet weak var cropButton: UIButton!
+    @IBOutlet weak var magicCropButton: UIButton!
     @IBOutlet weak var stickerButton: UIButton!
     @IBOutlet weak var drawButton: UIButton!
     @IBOutlet weak var textButton: UIButton!

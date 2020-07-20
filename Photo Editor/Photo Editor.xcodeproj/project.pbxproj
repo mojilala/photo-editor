@@ -46,6 +46,9 @@
 		059EA7241EACB8790072C0FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 059EA7231EACB8790072C0FE /* Assets.xcassets */; };
 		059EA7271EACB8790072C0FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059EA7251EACB8790072C0FE /* LaunchScreen.storyboard */; };
 		48AAFDEECB4414BA830BE7DC /* Pods_Photo_Editor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1814E677B88894E6E98F1F1 /* Pods_Photo_Editor.framework */; };
+		FF2632D924C5E67A0071866B /* ImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2632D824C5E67A0071866B /* ImageCropper.swift */; };
+		FF2632DB24C5E6820071866B /* ImageCropperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2632DA24C5E6820071866B /* ImageCropperView.swift */; };
+		FF2632DD24C5E9F60071866B /* MagicCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2632DC24C5E9F60071866B /* MagicCropViewController.swift */; };
 		FF283E2B24C57D3300B7F490 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF283E2A24C57D3300B7F490 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +96,9 @@
 		059EA7281EACB8790072C0FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1814E677B88894E6E98F1F1 /* Pods_Photo_Editor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Photo_Editor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B5A9A68C96C3731D8754B6 /* Pods-Photo Editor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photo Editor.release.xcconfig"; path = "Target Support Files/Pods-Photo Editor/Pods-Photo Editor.release.xcconfig"; sourceTree = "<group>"; };
+		FF2632D824C5E67A0071866B /* ImageCropper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropper.swift; sourceTree = "<group>"; };
+		FF2632DA24C5E6820071866B /* ImageCropperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropperView.swift; sourceTree = "<group>"; };
+		FF2632DC24C5E9F60071866B /* MagicCropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicCropViewController.swift; sourceTree = "<group>"; };
 		FF283E2A24C57D3300B7F490 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +151,7 @@
 				056513141EF489B4009EA38F /* CropView.swift */,
 				056513151EF489B4009EA38F /* CropRectView.swift */,
 				056513161EF489B4009EA38F /* CropViewController.swift */,
+				FF2632DC24C5E9F60071866B /* MagicCropViewController.swift */,
 				056513171EF489B4009EA38F /* UIImage+Crop.swift */,
 				056513181EF489B4009EA38F /* ResizeControl.swift */,
 				059EA71C1EACB8790072C0FE /* AppDelegate.swift */,
@@ -156,6 +163,8 @@
 				056513431EF489CD009EA38F /* PhotoEditor+Controls.swift */,
 				056513441EF489CD009EA38F /* PhotoEditor+Crop.swift */,
 				056513451EF489CD009EA38F /* PhotoEditor+Font.swift */,
+				FF2632D824C5E67A0071866B /* ImageCropper.swift */,
+				FF2632DA24C5E6820071866B /* ImageCropperView.swift */,
 				0565132A1EF489C0009EA38F /* StickersViewController.xib */,
 				0565132B1EF489C0009EA38F /* ColorCollectionViewCell.xib */,
 				0565132C1EF489C0009EA38F /* EmojiCollectionViewCell.xib */,
@@ -179,7 +188,6 @@
 				051FBA9EFB9CD7E405F3070D /* Pods-Photo Editor.debug.xcconfig */,
 				C0B5A9A68C96C3731D8754B6 /* Pods-Photo Editor.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -323,6 +331,7 @@
 				FF283E2B24C57D3300B7F490 /* Extensions.swift in Sources */,
 				056513221EF489B4009EA38F /* UIView+Image.swift in Sources */,
 				056513461EF489CD009EA38F /* PhotoEditor+Gestures.swift in Sources */,
+				FF2632DB24C5E6820071866B /* ImageCropperView.swift in Sources */,
 				056513201EF489B4009EA38F /* UIImage+Size.swift in Sources */,
 				056513471EF489CD009EA38F /* PhotoEditor+Drawing.swift in Sources */,
 				056513191EF489B4009EA38F /* PhotoEditorViewController.swift in Sources */,
@@ -332,12 +341,14 @@
 				056513491EF489CD009EA38F /* PhotoEditor+StickersViewController.swift in Sources */,
 				0565131D1EF489B4009EA38F /* EmojiCollectionViewCell.swift in Sources */,
 				056513271EF489B4009EA38F /* CropViewController.swift in Sources */,
+				FF2632DD24C5E9F60071866B /* MagicCropViewController.swift in Sources */,
 				0565134D1EF489CD009EA38F /* PhotoEditor+Font.swift in Sources */,
 				0565131C1EF489B4009EA38F /* ColorsCollectionViewDelegate.swift in Sources */,
 				0565131E1EF489B4009EA38F /* EmojisCollectionViewDelegate.swift in Sources */,
 				0565131A1EF489B4009EA38F /* StickersViewController.swift in Sources */,
 				056513481EF489CD009EA38F /* PhotoEditor+Keyboard.swift in Sources */,
 				0565131B1EF489B4009EA38F /* ColorCollectionViewCell.swift in Sources */,
+				FF2632D924C5E67A0071866B /* ImageCropper.swift in Sources */,
 				0565131F1EF489B4009EA38F /* StickerCollectionViewCell.swift in Sources */,
 				056513251EF489B4009EA38F /* CropView.swift in Sources */,
 				0565134A1EF489CD009EA38F /* PhotoEditor+UITextView.swift in Sources */,

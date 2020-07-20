@@ -22,3 +22,17 @@ extension PhotoEditorViewController: CropViewControllerDelegate {
     }
     
 }
+
+extension PhotoEditorViewController: MagicCropViewControllerDelegate {
+    
+    public func magicCropViewController(_ controller: MagicCropViewController, didFinishCroppingImage image: UIImage) {
+        controller.dismiss(animated: true, completion: nil)
+        self.setImageView(image: image)
+    }
+    
+    public func magicCropViewControllerDidCancel(_ controller: MagicCropViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+}
+

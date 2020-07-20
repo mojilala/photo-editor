@@ -40,6 +40,14 @@ extension PhotoEditorViewController {
         let navController = UINavigationController(rootViewController: controller)
         present(navController, animated: true, completion: nil)
     }
+    
+    @IBAction func magicCropButtonTapped(_ sender: UIButton) {
+        let controller = MagicCropViewController()
+        controller.delegate = self
+        controller.image = image
+        let navController = UINavigationController(rootViewController: controller)
+        present(navController, animated: true, completion: nil)
+    }
 
     @IBAction func stickersButtonTapped(_ sender: Any) {
         addStickersViewController()
