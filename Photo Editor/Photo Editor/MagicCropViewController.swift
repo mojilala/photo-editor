@@ -35,6 +35,7 @@ open class MagicCropViewController: UIViewController {
     open override func loadView() {
         let contentView = UIView()
         contentView.autoresizingMask = .flexibleWidth
+        contentView.backgroundColor = UIColor.black
         
         // Add CropView
         cropView = ImageCropperView(image: image)
@@ -59,8 +60,14 @@ open class MagicCropViewController: UIViewController {
 
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.toolbar.isTranslucent = false
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(CropViewController.cancel(_:)))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(CropViewController.done(_:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(MagicCropViewController.cancel(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(MagicCropViewController.done(_:)))
+        
+        if self.toolbarItems == nil {
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let constrainButton = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(MagicCropViewController.resetCrop(_:)))
+            toolbarItems = [flexibleSpace, constrainButton, flexibleSpace]
+        }
         
         navigationController?.isToolbarHidden = toolbarHidden
         
@@ -76,7 +83,7 @@ open class MagicCropViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
-    open func resetCropRect() {
+    @objc func resetCrop(_ sender: UIBarButtonItem) {
         cropView?.resetCrop()
     }
     
@@ -88,6 +95,8 @@ open class MagicCropViewController: UIViewController {
     @objc func done(_ sender: UIBarButtonItem) {
         if let image = cropView?.cropImage() {
             delegate?.magicCropViewController(self, didFinishCroppingImage: image)
+        } else {
+            delegate?.magicCropViewControllerDidCancel(self)
         }
     }
 }

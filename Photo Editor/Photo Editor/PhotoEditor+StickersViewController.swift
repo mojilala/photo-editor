@@ -69,7 +69,7 @@ extension PhotoEditorViewController: StickersViewControllerDelegate {
         }
         imageView.contentMode = .scaleAspectFit
         imageView.frame.size = CGSize(width: 100, height: 100)
-        imageView.center = canvasImageView.center
+//        imageView.center = canvasImageView.center
         
         self.canvasImageView.addSubview(imageView)
         //Gestures
