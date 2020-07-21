@@ -12,11 +12,11 @@ import UIKit
 // MARK: - Control
 public enum control: String {
     case crop
+    case magicCrop
     case sticker
     case draw
     case text
     case save
-    case share
     case clear
 
     public func string() -> String {
@@ -80,7 +80,7 @@ extension PhotoEditorViewController {
         self.canvasImageView.addSubview(textView)
         addGestures(view: textView)
         textView.becomeFirstResponder()
-    }    
+    }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         view.endEditing(true)
@@ -97,19 +97,10 @@ extension PhotoEditorViewController {
         UIImageWriteToSavedPhotosAlbum(canvasView.toImage(),self, #selector(PhotoEditorViewController.image(_:withPotentialError:contextInfo:)), nil)
     }
     
-    @IBAction func shareButtonTapped(_ sender: UIButton) {
-        let activity = UIActivityViewController(activityItems: [canvasView.toImage()], applicationActivities: nil)
-        if let popoverController = activity.popoverPresentationController {
-            popoverController.barButtonItem = UIBarButtonItem(customView: sender)
-        }
-
-        present(activity, animated: true, completion: nil)
-        
-    }
-    
     @IBAction func clearButtonTapped(_ sender: AnyObject) {
         //clear drawing
         canvasImageView.image = nil
+        imageView.image = defaultImage
         //clear stickers and textviews
         for subview in canvasImageView.subviews {
             subview.removeFromSuperview()
@@ -138,12 +129,12 @@ extension PhotoEditorViewController {
                 clearButton.isHidden = true
             } else if (control == "crop") {
                 cropButton.isHidden = true
+            } else if (control == "magicCrop") {
+                magicCropButton.isHidden = true
             } else if (control == "draw") {
                 drawButton.isHidden = true
             } else if (control == "save") {
                 saveButton.isHidden = true
-            } else if (control == "share") {
-                shareButton.isHidden = true
             } else if (control == "sticker") {
                 stickerButton.isHidden = true
             } else if (control == "text") {

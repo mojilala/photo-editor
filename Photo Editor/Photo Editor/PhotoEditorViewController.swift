@@ -37,7 +37,6 @@ public final class PhotoEditorViewController: UIViewController {
     @IBOutlet weak var drawButton: UIButton!
     @IBOutlet weak var textButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
     
     @objc public var image: UIImage?
@@ -69,6 +68,7 @@ public final class PhotoEditorViewController: UIViewController {
     var activeTextView: UITextView?
     var imageViewToPan: UIImageView?
     var isTyping: Bool = false
+    var defaultImage: UIImage?
     
     
     var stickersViewController: StickersViewController!
@@ -81,6 +81,9 @@ public final class PhotoEditorViewController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        
+        defaultImage = image!
+        
         self.setImageView(image: image!)
         
         deleteView.layer.cornerRadius = deleteView.bounds.height / 2

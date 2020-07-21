@@ -35,13 +35,23 @@ open class MagicCropViewController: UIViewController {
     open override func loadView() {
         let contentView = UIView()
         contentView.autoresizingMask = .flexibleWidth
-        contentView.backgroundColor = UIColor.black
-        view = contentView
         
         // Add CropView
-        cropView = ImageCropperView(frame: contentView.bounds)
+        cropView = ImageCropperView(image: image)
+        cropView!.contentMode = .scaleAspectFit
         contentView.addSubview(cropView!)
         
+        view = contentView
+        
+        cropView!.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        cropView!.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier:1).isActive = true
+        if #available(iOS 11.0, *) {
+            cropView!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
+        } else {
+            // Fallback on earlier versions
+        }
+        cropView!.translatesAutoresizingMaskIntoConstraints = false
+        cropView?.isUserInteractionEnabled = true
     }
 
     open override func viewDidLoad() {
@@ -52,21 +62,18 @@ open class MagicCropViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(CropViewController.cancel(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(CropViewController.done(_:)))
         
-        if self.toolbarItems == nil {
-            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            let constrainButton = UIBarButtonItem(title: "Constrain", style: .plain, target: self, action: #selector(CropViewController.constrain(_:)))
-            toolbarItems = [flexibleSpace, constrainButton, flexibleSpace]
-        }
-        
         navigationController?.isToolbarHidden = toolbarHidden
         
         cropView?.image = image
     }
     
+    open override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        cropView?.isUserInteractionEnabled = false
+    }
+    
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
     }
     
     open func resetCropRect() {
@@ -79,7 +86,7 @@ open class MagicCropViewController: UIViewController {
     }
     
     @objc func done(_ sender: UIBarButtonItem) {
-        if let image = cropView?.croppedImage {
+        if let image = cropView?.cropImage() {
             delegate?.magicCropViewController(self, didFinishCroppingImage: image)
         }
     }

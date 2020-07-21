@@ -13,10 +13,10 @@ public class ImageCropperView: UIImageView {
     public var isCropEnabled = true
 
     //Update this for path line color
-    public var strokeColor:UIColor = UIColor.black
+    public var strokeColor:UIColor = UIColor.blue
     
     //Update this for path line width
-    public var lineWidth:CGFloat = 2.0
+    public var lineWidth:CGFloat = 4.0
     
     private var path = UIBezierPath()
     private var shapeLayer = CAShapeLayer()
@@ -38,6 +38,10 @@ public class ImageCropperView: UIImageView {
      - Returns: Cropped image
      */
     public func cropImage() -> UIImage? {
+        if(layer.sublayers == nil) {
+            return nil
+        }
+        
         shapeLayer.fillColor = UIColor.black.cgColor
         layer.mask = shapeLayer
         
@@ -63,6 +67,12 @@ public class ImageCropperView: UIImageView {
         shapeLayer = CAShapeLayer()
         layer.mask = nil
         croppedImage = nil
+        
+        if(layer.sublayers != nil) {
+            for sublayer in layer.sublayers! {
+                sublayer.removeFromSuperlayer()
+            }
+        }
     }
     
     //MARK:- Private methods
