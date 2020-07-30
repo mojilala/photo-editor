@@ -108,9 +108,25 @@ extension PhotoEditorViewController {
     }
     
     @IBAction func continueButtonPressed(_ sender: Any) {
-        let image = self.canvasView.toImage()
-        photoEditorDelegate?.doneEditing(image: image)
-        self.dismiss(animated: true, completion: nil)
+       self.canvasView.backgroundColor = UIColor(red: 33/255, green: 255/255, blue: 58/255, alpha: 1)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let image = self.canvasView.toImage()
+                   
+            if let data = image.jpegData(compressionQuality: 1) {
+                let filename = self.getDocumentsDirectory().appendingPathComponent("copy.png")
+                try? data.write(to: filename)
+            }
+                   
+            self.photoEditorDelegate?.doneEditing(imageUri: self.getDocumentsDirectory().appendingPathComponent("copy.png").absoluteString)
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
     }
 
     //MAKR: helper methods
